@@ -4,15 +4,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Travel Book" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Travel Book" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script src="jquery.geocomplete.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
     <%= csrf_meta_tags %>
   </head>
   <body>
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-       <%= render 'layouts/messages' %>
-       <%= yield %>
+    <main>
+      <div class="container">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+        <%= render 'layouts/footer' %>
+      </div>
+    </main>
   </body>
 </html>

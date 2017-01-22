@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+  <%= link_to 'Add new place!', root_path, class: 'btn btn-warning margin-top tiny' %>
+  <div class="margin-top tiny">
+    <div class="row">
+      <div class="row col-lg-8">
+        <div id="map"></div>
+      </div>
+      <div class="col-lg-4">
+        <div class="table">
+          <thead class="thead-default">
+            <tr>
+              <th>Location Name |</th>
+              <th>Date Visited |</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <h1 class="text-center">Welcome to TravelBook!</h1>
+<% end %>

@@ -4,8 +4,25 @@
     padding-top: 2%;
   }
 
+  &.map {
+    padding-top: 5%;
+  }
+
   &.small {
     padding-top: 10%;
   }
 
+}
+
+.margin-top {
+
+  &.tiny {
+    margin-top: 2%;
+  }
+
+}
+
+.custom-container {
+  width: 1100px;
+  max-width: 100%;
 }

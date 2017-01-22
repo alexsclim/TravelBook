@@ -1,21 +1,23 @@
-<%= javascript_tag "const userId = #{current_user.id};" %>
-<script type="text/javascript">
-$(document).ready(()=> {
-  L.mapbox.accessToken = "pk.eyJ1IjoiYWxleHNjbGltIiwiYSI6ImNpc285OWc1cTA2MTAzMG14amI4MHF5aDYifQ.aBzJCCizYqDs0XmnnCGiFw"
-  const map = L.mapbox.map('map', 'mapbox.streets').setView([45.1510532655634, -79.398193359375], 9);
+<% if user_signed_in? %>
+  <%= javascript_tag "const userId = #{current_user.id};" %>
+  <script type="text/javascript">
+  $(document).ready(()=> {
+    L.mapbox.accessToken = "pk.eyJ1IjoiYWxleHNjbGltIiwiYSI6ImNpc285OWc1cTA2MTAzMG14amI4MHF5aDYifQ.aBzJCCizYqDs0XmnnCGiFw"
+    const map = L.mapbox.map('map', 'mapbox.streets').setView([45.1510532655634, -79.398193359375], 9);
 
-  $.ajax({
-    type: "GET",
-    url: "/users/${userId}/locations",
-    dataType: "json",
-    success: (data) => {
-      console.log(data);
-      L.mapbox.featureLayer(data).addTo(map);
-    }
+    $.ajax({
+      type: "GET",
+      url: "/users/${userId}/locations",
+      dataType: "json",
+      success: (data) => {
+        console.log(data);
+        L.mapbox.featureLayer(data).addTo(map);
+      }
+    });
+
   });
-
-});
-</script>
+  </script>
+<% end %>
 
 <% if user_signed_in? %>
   <%= link_to 'Add new place!', new_user_location_path(current_user.id), class: 'btn btn-warning margin-top tiny' %>

@@ -18,7 +18,7 @@ development:
   encoding: unicode
   database: TravelBook_development
   pool:     5
-  username: root
+  username: postgres
   password: 123456
   template: template0
 
@@ -46,7 +46,7 @@ test:
   encoding: unicode
   database: TravelBook_test
   pool:     5
-  username: root
+  username: postgres
   password: 123456
   template: template0
 
@@ -56,6 +56,6 @@ production:
   encoding: unicode
   database: TravelBook_production
   pool:     5
-  username: root
+  username: postgres
   password:
   template: template0

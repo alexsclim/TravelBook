@@ -21,8 +21,11 @@ class LocationsController < ApplicationController
     end
   end
 
+  def delete
+  end
+
   private
   def location_params
-    params.require(:location).permit(:address, :longitude, :latitude, :visited_at)
+    params.require(:location).permit(:address, :longitude, :latitude, :description, :visited_at)
   end
 end

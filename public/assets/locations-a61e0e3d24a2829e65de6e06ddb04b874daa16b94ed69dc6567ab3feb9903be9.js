@@ -1,0 +1,1 @@
+"use strict";$(document).ready(function(){$("#add-location-geocode").geocomplete({details:"form",detailsAttribute:"fill"}),$("button.search").click(function(){$("input").trigger("geocode")})});

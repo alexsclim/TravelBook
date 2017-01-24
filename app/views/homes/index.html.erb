@@ -2,19 +2,28 @@
   <%= link_to 'Add new place!', new_user_location_path(current_user.id), class: 'btn btn-warning margin-top tiny' %>
   <div class="margin-top tiny" data-user-id="<%= current_user.id %>" id="get-user">
     <div class="row">
-      <div class="row col-lg-8">
+      <div class="row col-lg-7">
         <div id="map"></div>
       </div>
-      <div class="col-lg-4">
-        <div class="table">
+      <div class="col-lg-5">
+        <table class="table">
           <thead class="thead-default">
             <tr>
-              <th>Location Name |</th>
-              <th>Date Visited |</th>
+              <th>Address</th>
+              <th>Date</th>
               <th>Delete</th>
             </tr>
           </thead>
-        </div>
+          <tbody>
+            <% current_user.locations.each do |location| %>
+              <tr>
+                <td><%= location.address %></td>
+                <td><%= format_time(location.visited_at) if location.visited_at %></td>
+                <td></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

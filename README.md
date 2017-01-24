@@ -1,50 +1,35 @@
-Travelbook
-================
+# TravelBook
+Log where you have been
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+TravelBook Web Application built using Ruby on Rails.
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+### Quickstart
 
-Rails Composer is supported by developers who purchase our RailsApps tutorials.
+Make sure PostgreSQL is installed locally.
 
-Problems? Issues?
------------
-
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
-
-Ruby on Rails
--------------
-
-This application requires:
-
+Set up Ruby and Rails on your local machine.
 - Ruby 2.3.1
 - Rails 5.0.1
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
+Clone the TrekitAPI repository:
+`git clone git@github.com:alexsclim/TravelBook.git`
 
-Getting Started
----------------
+Fetch all project dependencies with
+`bundle install`
 
-Documentation and Support
--------------------------
+Create your database with
+`rake db:create`
 
-Issues
--------------
+Migrate your database with
+`rake db:migrate`
 
-Similar Projects
-----------------
+If you want to populate your database with seed data run
+`rake db:seed`
 
-Contributing
-------------
+Start your rails server with
+`rails s`
 
-Credits
--------
+Go to `localhost:3000` to use the application.
 
-License
--------
+### To run test suite
+To run the whole test suite, run `bundle exec rspec spec`.

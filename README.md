@@ -1,5 +1,7 @@
 # TravelBook
-Log where you have been
+Log where you have been!  
+  
+http://travelbook-me.herokuapp.com/
 
 TravelBook Web Application built using Ruby on Rails.
 

@@ -12,5 +12,4 @@ $(document).ready(()=> {
       L.mapbox.featureLayer(data).addTo(map);
     }
   });
-
 });

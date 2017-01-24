@@ -3,21 +3,8 @@ class LocationsController < ApplicationController
 
   def index
     @locations = current_user.locations
-    @geojson = Array.new
-
-    @locations.each do |location|
-      @geojson << {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [location.longitude, location.latitude]
-        },
-        properties: {
-          address: location.address,
-        }
-      }
-    end
-    render json: @geojson
+    @geojson_locations = GeoJSONService.new(@locations).call
+    render json: @geojson_locations
   end
 
   def new

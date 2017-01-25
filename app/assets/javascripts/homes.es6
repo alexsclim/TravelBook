@@ -25,6 +25,7 @@ $(document).ready(()=> {
       });
       markers.addLayer(geoJsonLayer);
       map.addLayer(markers);
+      map.fitBounds(markers.getBounds());
     }
   });
 });

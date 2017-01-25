@@ -17,6 +17,7 @@ class GeoJSONService
         },
         properties: {
           address: location.address,
+          'title': location.address,
           'description': location.description,
           'marker-size': 'large',
           'marker-color': 'ff1a1a',

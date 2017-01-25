@@ -1,5 +1,5 @@
 # TravelBook
-Log where you have been!  
+Remember where you have been!  
   
 http://travelbook-me.herokuapp.com/
 
@@ -13,7 +13,7 @@ Set up Ruby and Rails on your local machine.
 - Ruby 2.3.1
 - Rails 5.0.1
 
-Clone the TrekitAPI repository:
+Clone the TravelBook repository:
 `git clone git@github.com:alexsclim/TravelBook.git`
 
 Fetch all project dependencies with

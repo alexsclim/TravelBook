@@ -19,7 +19,7 @@
               <tr>
                 <td><%= location.address %></td>
                 <td><%= format_time(location.visited_at) if location.visited_at %></td>
-                <td></td>
+                <td><%= link_to 'Delete', user_location_path(current_user.id, location.id), method: :delete %></td>
               </tr>
             <% end %>
           </tbody>

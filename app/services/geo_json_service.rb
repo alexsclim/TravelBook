@@ -18,6 +18,8 @@ class GeoJSONService
         properties: {
           address: location.address,
           'title': location.address,
+          'start_date': location.start_date.strftime('%F'),
+          'end_date': location.end_date.strftime('%F'),
           'description': location.description,
           'marker-size': 'large',
           'marker-color': 'ff1a1a',

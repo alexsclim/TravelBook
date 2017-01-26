@@ -2,8 +2,8 @@
   <div class="row align-items-center">
     <div class="col-lg-6 offset-lg-3">
 
-      <h3 class="text-center">Add new location</h3>
-      <%= form_for(@location, url: user_locations_path) do |f| %>
+      <h3 class="text-center">Edit location: <%= @location.address %></h3>
+      <%= form_for(@location, url: user_location_path(@location)) do |f| %>
 
         <div class="form-group">
           <div>Search for the location to autocomplete the form</div>
@@ -46,9 +46,8 @@
             </div>
           </div>
         </div>
-        <%= f.submit "Add Location", class: 'btn btn-primary' %>
+        <%= f.submit "Update Location", class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>
 </div>
-

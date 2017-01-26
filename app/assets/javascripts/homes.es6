@@ -15,7 +15,7 @@ $(document).ready(()=> {
     success: (data) => {
       const geoJsonLayer = L.geoJson(data, {
         onEachFeature: (feature, layer) => {
-          layer.bindPopup(`<b class="text-center">${feature.properties.title}</b>
+          layer.bindPopup(`<b><div class="text-center">${feature.properties.title}</div></b>
                            </br>
                            <div class="text-center">${feature.properties.description}</div>
                            </br>

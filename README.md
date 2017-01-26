@@ -37,4 +37,4 @@ Go to `localhost:3000` to use the application.
 To run the whole test suite, run `bundle exec rspec spec`.
 
 ### Kanban Board
-https://waffle.io/alexsclim/Trekit
+https://waffle.io/alexsclim/TravelBook

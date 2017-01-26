@@ -20,12 +20,19 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main>
-      <div class="container padding-top tiny">
+    <% if current_page?(root_path) && !user_signed_in? %>
+      <div class="background-home">
         <%= render 'layouts/messages' %>
         <%= yield %>
-        <%= render 'layouts/footer' %>
       </div>
-    </main>
+    <% else %>
+      <main>
+        <div class="container">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+          <%= render 'layouts/footer' %>
+        </div>
+      </main>
+    <% end %>
   </body>
 </html>

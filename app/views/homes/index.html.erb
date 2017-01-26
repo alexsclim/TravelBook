@@ -5,24 +5,26 @@
       <div id="map"></div>
     </div>
     <div class="col-lg-4">
-      <table class="table">
-        <thead class="thead-default">
-          <tr>
-            <th>Address</th>
-            <th>Start Date</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% current_user.locations.order(:start_date).each do |location| %>
+      <div>
+        <table class="table table-locations">
+          <thead class="thead-default">
             <tr>
-              <td><%= link_to "#{location.address}", edit_user_location_path(current_user.id, location.id) %></td>
-              <td><%= format_time(location.start_date) if location.start_date %></td>
-              <td><%= link_to 'Delete', user_location_path(current_user.id, location.id), method: :delete %></td>
+              <th>Address</th>
+              <th>Start Date</th>
+              <th>Delete</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% current_user.locations.order(:start_date).each do |location| %>
+              <tr>
+                <td><%= link_to "#{location.address}", edit_user_location_path(current_user.id, location.id) %></td>
+                <td><%= format_time(location.start_date) if location.start_date %></td>
+                <td><%= link_to 'Delete', user_location_path(current_user.id, location.id), method: :delete %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

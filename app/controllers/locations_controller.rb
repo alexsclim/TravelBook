@@ -9,6 +9,7 @@ class LocationsController < ApplicationController
 
   def new
     @location = Location.new
+    @trips = Trip.all
   end
 
   def create
@@ -42,6 +43,6 @@ class LocationsController < ApplicationController
 
   private
   def location_params
-    params.require(:location).permit(:address, :longitude, :latitude, :description, :start_date, :end_date)
+    params.require(:location).permit(:address, :longitude, :latitude, :description, :start_date, :end_date, :trip_id)
   end
 end

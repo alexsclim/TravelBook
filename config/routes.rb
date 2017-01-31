@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :locations
+    resources :trips do
+      resources :locations
+    end
   end
 
   get '/contact', to: 'static_pages#contact'

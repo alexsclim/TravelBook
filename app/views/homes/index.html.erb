@@ -1,4 +1,5 @@
-<%= link_to 'Add new place!', new_user_location_path(current_user.id), class: 'btn btn-warning margin-top tiny' %>
+<%= link_to 'Add new place!', new_user_location_path(current_user.id), class: 'btn btn-primary margin-top tiny' %>
+<%= link_to 'My Trips!', user_trips_path(current_user.id), class: 'btn btn-warning margin-top tiny' %>
 <div class="margin-top tiny" data-user-id="<%= current_user.id %>" id="get-user">
   <div class="row">
     <div class="row col-lg-8">
@@ -17,9 +18,9 @@
           <tbody>
             <% current_user.locations.order(:start_date).each do |location| %>
               <tr>
-                <td><%= link_to "#{location.address}", edit_user_location_path(current_user.id, location.id) %></td>
+                <td><%= link_to "#{location.address}", edit_user_location_path(location.user_id, location.id) %></td>
                 <td><%= format_time(location.start_date) if location.start_date %></td>
-                <td><%= link_to 'Delete', user_location_path(current_user.id, location.id), method: :delete %></td>
+                <td><%= link_to 'Delete', user_location_path(location.user_id, location.id), method: :delete %></td>
               </tr>
             <% end %>
           </tbody>

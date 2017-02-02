@@ -1,0 +1,4 @@
+<% @user ||= current_user %>
+<%= link_to "Following (#{@user.following.all.count})", following_user_path(@user) %> |
+<%= link_to "Followers (#{@user.followers.all.count})", followers_user_path(@user) %>
+

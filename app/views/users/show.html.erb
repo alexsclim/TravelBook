@@ -1,3 +1,30 @@
-<h3>User</h3>
-<p>Name: <%= @user.name if @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<h2 class="padding-top tiny">User: <%= full_name(@user) %></h2>
+<h4>Total Locations: <%= @user.locations.count %></h4>
+<%= render 'follow_form' if user_signed_in? %>
+<div class="margin-top tiny" data-user-id="<%= @user.id %>" id="get-user">
+  <div class="row">
+    <div class="row col-lg-8">
+      <div id="users-map"></div>
+    </div>
+    <div class="col-lg-4">
+      <div>
+        <%= link_to "Trips (#{@user.trips.count})", user_trips_path(@user) %> |
+        <%= render 'shared/stats' %>
+        <table class="table table-locations">
+          <thead class="thead-default">
+            <tr>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @user.locations.order(:start_date).each do |location| %>
+              <tr>
+                <td><%= location.address %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

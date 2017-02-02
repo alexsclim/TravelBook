@@ -2,7 +2,8 @@ class TripsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @trips = Trip.all
+    @user = User.find(params[:user_id])
+    @trips = @user.trips
   end
 
   def new

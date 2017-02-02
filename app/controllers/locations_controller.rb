@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
   def create
     @location = current_user.locations.build(location_params)
     if @location.save
-      flash[:success] = "Location created!"
+      flash[:notice] = "Location created!"
       redirect_to root_url
     else
       render 'new'
@@ -37,7 +37,7 @@ class LocationsController < ApplicationController
 
   def destroy
     Location.find(params[:id]).destroy
-    flash[:success] = "Location deleted"
+    flash[:notice] = "Location deleted"
     redirect_to root_url
   end
 

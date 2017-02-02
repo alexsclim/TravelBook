@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
 
   def index
     @user = User.find(params[:user_id])
@@ -13,7 +13,7 @@ class TripsController < ApplicationController
   def create
     @trip = current_user.trips.build(trip_params)
     if @trip.save
-      flash[:success] = "Trip created!"
+      flash[:notice] = "Trip created!"
       redirect_to user_trips_path
     else
       render 'new'
@@ -32,7 +32,7 @@ class TripsController < ApplicationController
 
   def destroy
     Trip.find(params[:id]).destroy
-    flash[:success] = "Location deleted"
+    flash[:notice] = "Location deleted"
     redirect_to user_trips_path
   end
 

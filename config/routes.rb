@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     resources :trips do
       resources :locations
     end
+    member do
+      get :following, :followers
+    end
   end
+
+  resources :relationships, only: [:create, :destroy]
 
   get '/contact', to: 'static_pages#contact'
 end

@@ -1,3 +1,21 @@
-<h3>User</h3>
-<p>Name: <%= @user.name if @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<h2 class="text-center padding-top tiny">User: <%= @user.first_name if @user.first_name%> <%= @user.last_name if @user.last_name %></h2>
+
+<%= render 'follow_form' if user_signed_in? %>
+
+<table class="table margin-top tiny">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Number of Places Travelled</th>
+      <th>Number of Trips</th>
+      <th>Followers</th>
+      <th>Following</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.locations.count %></td>
+      <td><%= @user.trips.count %></td>
+      <td><%= @user.followers.count %></td>
+      <td><%= @user.following.count %></td>
+    </tr>
+</table>

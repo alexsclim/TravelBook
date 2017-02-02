@@ -7,7 +7,7 @@
           <div class="card-block">
             <h3 class="card-title"><%= link_to "#{trip.title}", user_trip_path(trip.user_id, trip.id) %></h3>
             <p class="card-text"><%= trip.summary %></p>
-            <%= link_to 'View Trip', user_trip_path(trip.id, trip.user_id), class: 'btn btn-primary' %>
+            <%= link_to 'View Trip', user_trip_path(trip.user_id, trip.id), class: 'btn btn-primary' %>
             <%= link_to 'Delete', user_trip_path(current_user.id, trip.id), class: 'btn btn-danger', method: :delete %>
           </div>
         </div>

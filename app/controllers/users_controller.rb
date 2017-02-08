@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all.order(:first_name)
+    if params[:search]
+      @users = User.search(params[:search]).order('created_at DESC')
+    else
+      @users = User.all.order(:first_name)
+    end
   end
 
   def show
@@ -15,14 +19,12 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
     @user  = User.find(params[:id])
     @users = @user.following.order(:first_name)
     render 'show_follow'
   end
 
   def followers
-    @title = "Followers"
     @user  = User.find(params[:id])
     @users = @user.followers.order(:first_name)
     render 'show_follow'

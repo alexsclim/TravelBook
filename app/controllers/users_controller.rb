@@ -1,11 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    if params[:search]
-      @users = User.search(params[:search]).order('created_at DESC')
-    else
-      @users = User.all.order(:first_name)
-    end
+      @users = User.search(params[:search], params[:page]).order(:first_name)
   end
 
   def show

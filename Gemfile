@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'sprockets', '>=3.0.0.beta'
 gem 'sprockets-es6'
+gem 'will_paginate', '>= 3.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri

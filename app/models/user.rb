@@ -21,7 +21,11 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  def self.search(search)
-    where("first_name ILIKE ? OR last_name ILIKE ?", "%#{search}%", "%#{search}%")
+  def self.search(search, page)
+    if search
+      where("first_name ILIKE ? OR last_name ILIKE ?", "%#{search}%", "%#{search}%").paginate(page: page, per_page: 7)
+    else
+      paginate(page: page, per_page: 7)
+    end
   end
 end

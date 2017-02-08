@@ -21,11 +21,19 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def following_paginate(page)
+    following.paginate(page: page, per_page: 7).order(:first_name)
+  end
+
+  def followers_paginate(page)
+    followers.paginate(page: page, per_page: 7).order(:first_name)
+  end
+
   def self.search(search, page)
     if search
-      where("first_name ILIKE ? OR last_name ILIKE ?", "%#{search}%", "%#{search}%").paginate(page: page, per_page: 7)
+      where("first_name ILIKE ? OR last_name ILIKE ?", "%#{search}%", "%#{search}%").paginate(page: page, per_page: 7).order(:first_name)
     else
-      paginate(page: page, per_page: 7)
+      paginate(page: page, per_page: 7).order(:first_name)
     end
   end
 end

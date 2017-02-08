@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-      @users = User.search(params[:search], params[:page]).order(:first_name)
+     @users = User.search(params[:search], params[:page])
   end
 
   def show
@@ -16,13 +16,13 @@ class UsersController < ApplicationController
 
   def following
     @user  = User.find(params[:id])
-    @users = @user.following.order(:first_name)
+    @users = @user.following_paginate(params[:page])
     render 'show_follow'
   end
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers.order(:first_name)
+    @users = @user.followers_paginate(params[:page])
     render 'show_follow'
   end
 

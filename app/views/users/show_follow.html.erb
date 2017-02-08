@@ -17,3 +17,11 @@
     </div>
   </div>
 </div>
+
+<div class="flickr_pagination text-center">
+  <div class="page_info">
+    <%= page_entries_info @users %>
+  </div>
+  <%= will_paginate @users, :container => false %>
+</div>
+

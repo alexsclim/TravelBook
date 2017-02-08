@@ -17,14 +17,14 @@ class UsersController < ApplicationController
   def following
     @title = "Following"
     @user  = User.find(params[:id])
-    @users = @user.following
+    @users = @user.following.order(:first_name)
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers.order(:first_name)
     render 'show_follow'
   end
 

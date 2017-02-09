@@ -2,6 +2,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :first_name,
+            :last_name,
+            :email,
+            :password,
+            :encrypted_password,
+            presence: true
+
   has_many :locations, dependent: :destroy
   has_many :trips, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

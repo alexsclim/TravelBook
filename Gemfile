@@ -29,7 +29,6 @@ gem 'high_voltage'
 gem 'pg'
 
 group :development do
-  gem 'pry-rails'
   gem 'better_errors'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
@@ -39,6 +38,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'pry-rails'
 end
 
 group :production do
@@ -52,4 +52,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'rails-controller-testing'
 end

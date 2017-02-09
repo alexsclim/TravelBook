@@ -1,21 +1,24 @@
 require 'rails_helper'
 
-describe User do
+RSpec.describe User, type: :model do
 
-  describe "validations" do
-    it "is valid with an email and password" do
-      user = build(:user)
-      expect(user).to be_valid
-    end
+  let(:user) { create(:user) }
 
-    it "is invalid without an email" do
-      user = build(:user, email: nil)
-      expect(user.errors[:email]).to include("can't be blank")
-    end
-
-    it "is invalid without a password" do
-      user = build(:user, password: nil)
-      expect(user.errors[:password]).to include("can't be blank")
-    end
+  it 'is a valid factory' do
+    expect(user).to be_valid
   end
+
+  it { should respond_to(:first_name) }
+  it { should respond_to(:last_name) }
+  it { should respond_to(:email) }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
+
+  it { should validate_presence_of(:first_name) }
+  it { should validate_presence_of(:last_name) }
+  it { should validate_presence_of(:email) }
+  it { should validate_presence_of(:password) }
+  it { should validate_presence_of(:encrypted_password) }
+
+  it { should validate_uniqueness_of(:email).case_insensitive }
 end

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-  let(:user) { create(:user) }
 
   describe 'GET #index' do
 
@@ -12,7 +11,7 @@ RSpec.describe UsersController, type: :controller do
 
       it 'assigns @users' do
         get :index
-        expect(assigns(:users)).to eq([subject.current_user, user])
+        expect(assigns(:users)).to eq([subject.current_user])
       end
 
       it 'returns http success' do
@@ -40,6 +39,8 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  let(:user) { create(:user) }
+
   describe 'GET #show' do
 
     context 'when user is signed in' do
@@ -65,18 +66,18 @@ RSpec.describe UsersController, type: :controller do
     context 'when user is not signed in' do
 
       it 'returns http 302' do
-        get :index
+        get :show, params: { id: user.id }
         expect(response).to have_http_status(302)
       end
 
       it 'redirects to sign in' do
-        get :index
+        get :show, params: { id: user.id }
         expect(response).to redirect_to(root_path)
       end
     end
   end
 
-  describe "GET #following" do
+  describe 'GET #following' do
 
     context 'when user is signed in' do
 
@@ -112,7 +113,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "GET #followers" do
+  describe 'GET #followers' do
     context 'when user is signed in' do
 
       login_user

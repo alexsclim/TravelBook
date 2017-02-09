@@ -114,6 +114,140 @@ RSpec.describe LocationsController, type: :controller do
           post :create, params: { user_id: subject.current_user.id, location: { address: nil } }
           expect(response).to render_template(:new)
         end
+
+        it 'returns http 200' do
+          post :create, params: { user_id: subject.current_user.id, location: { address: nil } }
+          expect(response).to have_http_status(:success)
+        end
+
+        it 'renders the new template' do
+          post :create, params: { user_id: subject.current_user.id, location: { address: nil } }
+          expect(response).to render_template(:new)
+        end
+      end
+    end
+
+    context 'when user is not signed in' do
+
+      it 'returns http 302' do
+        post :create, params: { user_id: location.user_id, location: attributes_for(:location) }
+        expect(response).to have_http_status(302)
+      end
+
+      it 'redirects to sign in' do
+        post :create, params: { user_id: location.user_id, location: attributes_for(:location) }
+        expect(response).to redirect_to(root_path)
+      end
+    end
+  end
+
+  describe 'PUT #update' do
+
+    context 'when user is signed in' do
+
+      login_user
+
+      context 'with valid attributes' do
+
+        it 'located the requested location' do
+          put :update, params: { user_id: location.user_id, id: location.id, location: attributes_for(:location) }
+          expect(assigns(:location)).to eq(location)
+        end
+
+        it 'changes the attributes of the requested location' do
+          put :update, params: { user_id: location.user_id, id: location.id, location: attributes_for(:location, description: 'Hello World!') }
+          location.reload
+          expect(location.description).to eq("Hello World!")
+        end
+
+        it 'returns http 302' do
+          put :update, params: { user_id: location.user_id, id: location.id, location: attributes_for(:location, description: 'Hello World!') }
+          expect(response).to have_http_status(302)
+        end
+
+        it 'redirects to root path' do
+          put :update, params: { user_id: location.user_id, id: location.id, location: attributes_for(:location, description: 'Hello World!') }
+          expect(response).to redirect_to root_url
+        end
+      end
+
+      context 'with invalid attributes' do
+
+        it 'located the requested location' do
+          put :update, params: { user_id: location.user_id, id: location.id, location: { address: nil } }
+          expect(assigns(:location)).to eq(location)
+        end
+
+        it 'does not change the attributes of the requested location' do
+          put :update, params: { user_id: location.user_id, id: location.id, location: { address: nil, description: 'Hello World!' } }
+          location.reload
+          expect(location.description).to_not eq("Hello World!")
+        end
+
+        it 'returns http 200' do
+          put :update, params: { user_id: location.user_id, id: location.id, location: { address: nil } }
+          expect(response).to have_http_status(:success)
+        end
+
+        it 'renders the edit template' do
+          put :update, params: { user_id: location.user_id, id: location.id, location: { address: nil } }
+          expect(response).to render_template(:edit)
+        end
+      end
+    end
+
+
+    context 'when user is not signed in' do
+
+      it 'returns http 302' do
+        put :update, params: { user_id: location.user_id, id: location.id, location: attributes_for(:location) }
+        expect(response).to have_http_status(302)
+      end
+
+      it 'redirects to sign in' do
+        put :update, params: { user_id: location.user_id, id: location.id, location: attributes_for(:location) }
+        expect(response).to redirect_to(root_path)
+      end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+
+    context 'when user is signed in' do
+
+      login_user
+
+      before(:each) do
+        subject.current_user.locations.create(attributes_for(:location))
+      end
+
+      it 'deletes a location' do
+        expect {
+          delete :destroy, params: { user_id: subject.current_user.id, id: subject.current_user.locations.first.id }
+        }.to change(Location, :count).by(-1)
+      end
+
+      it 'returns http 302' do
+        delete :destroy, params: { user_id: subject.current_user.id, id: subject.current_user.locations.first.id }
+        expect(response).to have_http_status(302)
+      end
+
+      it "redirects to root path" do
+        delete :destroy, params: { user_id: subject.current_user.id, id: subject.current_user.locations.first.id }
+        expect(response).to redirect_to(root_url)
+      end
+    end
+
+    context 'when user is not signed in' do
+
+      it 'returns http 302' do
+        delete :destroy, params: { user_id: location.user_id, id: location.id }
+        expect(response).to have_http_status(302)
+      end
+
+      it 'redirects to sign in' do
+        delete :destroy, params: { user_id: location.user_id, id: location.id }
+        expect(response).to redirect_to(root_path)
       end
     end
   end

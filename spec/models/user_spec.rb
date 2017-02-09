@@ -1,13 +1,21 @@
+require 'rails_helper'
+
 describe User do
 
-  before(:each) { @user = User.new(email: 'user@example.com') }
+  describe "validations" do
+    it "is valid with an email and password" do
+      user = build(:user)
+      expect(user).to be_valid
+    end
 
-  subject { @user }
+    it "is invalid without an email" do
+      user = build(:user, email: nil)
+      expect(user.errors[:email]).to include("can't be blank")
+    end
 
-  it { should respond_to(:email) }
-
-  it "#email returns a string" do
-    expect(@user.email).to match 'user@example.com'
+    it "is invalid without a password" do
+      user = build(:user, password: nil)
+      expect(user.errors[:password]).to include("can't be blank")
+    end
   end
-
 end

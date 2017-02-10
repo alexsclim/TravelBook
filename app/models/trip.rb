@@ -3,5 +3,5 @@ class Trip < ApplicationRecord
             presence: true
 
   belongs_to :user
-  has_many :locations
+  has_many :locations, dependent: :nullify
 end

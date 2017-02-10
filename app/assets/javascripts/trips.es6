@@ -5,7 +5,6 @@ $(document).ready(()=> {
   }));;
 
   const markers = new L.MarkerClusterGroup();
-
   const userId = $('#get-user').data('user-id');
   const tripId = $('#get-trip').data('trip-id');
 

@@ -48,7 +48,7 @@
           <div class="form-group">
             <label>Trip Name</label>
             <%= f.select :trip_id,
-                options_for_select(Trip.all.collect { |trip| [trip.title, trip.id] }), include_blank: true %>
+                options_for_select(current_user.trips.all.collect { |trip| [trip.title, trip.id] }), include_blank: true %>
           </div>
         </div>
         <%= f.submit "Update Location", class: 'btn btn-primary' %>

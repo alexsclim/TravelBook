@@ -4,9 +4,6 @@ class User < ApplicationRecord
 
   validates :first_name,
             :last_name,
-            :email,
-            :password,
-            :encrypted_password,
             presence: true
 
   has_many :locations, dependent: :destroy

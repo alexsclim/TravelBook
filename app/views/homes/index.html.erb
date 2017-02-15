@@ -22,7 +22,7 @@
               <tr>
                 <td><%= link_to "#{location.address}", edit_user_location_path(location.user_id, location.id) %></td>
                 <td><%= format_time(location.start_date) if location.start_date %></td>
-                <td><%= link_to 'Delete', user_location_path(location.user_id, location.id), method: :delete %></td>
+                <td><%= link_to 'Delete', user_location_path(location.user_id, location.id), method: :delete, class: 'btn btn-danger' %></td>
               </tr>
             <% end %>
           </tbody>

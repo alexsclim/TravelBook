@@ -47,7 +47,7 @@ class LocationsController < ApplicationController
 
   def trip_create
     @location = current_user.trips.find(params[:trip_id]).locations.build(location_params)
-    if @location.save!
+    if @location.save
       flash[:notice] = "Location created!"
       redirect_to user_trip_path(current_user.id, params[:trip_id])
     else

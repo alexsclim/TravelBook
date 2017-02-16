@@ -41,8 +41,22 @@ class LocationsController < ApplicationController
     redirect_to root_url
   end
 
+  def trip_new
+    @location = Location.new
+  end
+
+  def trip_create
+    @location = current_user.trips.find(params[:trip_id]).locations.build(location_params)
+    if @location.save!
+      flash[:notice] = "Location created!"
+      redirect_to user_trip_path(current_user.id, params[:trip_id])
+    else
+      render 'trip_new'
+    end
+  end
+
   private
   def location_params
-    params.require(:location).permit(:address, :longitude, :latitude, :description, :start_date, :end_date, :trip_id)
+    params.require(:location).permit(:address, :longitude, :latitude, :description, :start_date, :end_date, :trip_id, :user_id)
   end
 end

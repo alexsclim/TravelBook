@@ -1,6 +1,6 @@
 <h2 class="text-center padding-top tiny">Trip: <%= @trip.title %></h2>
 <%= link_to 'Back', user_trips_path(@trip.user_id), class: 'btn btn-warning' %>
-<%= link_to 'Add new place!', new_user_location_path(@trip.id, @trip.user_id), class: 'btn btn-primary'  %>
+<%= link_to 'Add new place!', user_trip_locations_new_path(@trip.user_id, @trip.id), class: 'btn btn-primary'  %>
 <div data-trip-id="<%= @trip.id %>" id="get-trip" ></div>
 <div class="margin-top tiny" data-user-id="<%= current_user.id %>" id="get-user">
   <div class="row">

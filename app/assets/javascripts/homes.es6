@@ -14,12 +14,22 @@ $(document).ready(()=> {
     success: (data) => {
       const geoJsonLayer = L.geoJson(data, {
         onEachFeature: (feature, layer) => {
-          layer.bindPopup(`<b><div class="text-center">${feature.properties.title}</div></b>
+          if (feature.properties.image_url != "/images/thumb/missing.png") {
+            layer.bindPopup(`<b><div class="text-center">${feature.properties.title}</div></b>
+                           </br>
+                           <div class="text-center">${feature.properties.description}</div>
+                           <img class="container-image" src="${feature.properties.image_url}"></div>
+                           </br>
+                           <div>Start Date: ${feature.properties.start_date}</div>
+                           <div>End Date: ${feature.properties.end_date}</div>`);
+          } else {
+            layer.bindPopup(`<b><div class="text-center">${feature.properties.title}</div></b>
                            </br>
                            <div class="text-center">${feature.properties.description}</div>
                            </br>
                            <div>Start Date: ${feature.properties.start_date}</div>
                            <div>End Date: ${feature.properties.end_date}</div>`);
+          }
         }
       });
       markers.addLayer(geoJsonLayer);

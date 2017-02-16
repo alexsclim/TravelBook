@@ -17,6 +17,7 @@ $(document).ready(()=> {
           layer.bindPopup(`<b><div class="text-center">${feature.properties.title}</div></b>
                            </br>
                            <div class="text-center">${feature.properties.description}</div>
+                           <img src="${feature.properties.image_url}"></div>
                            </br>
                            <div>Start Date: ${feature.properties.start_date}</div>
                            <div>End Date: ${feature.properties.end_date}</div>`);

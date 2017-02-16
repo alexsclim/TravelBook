@@ -50,6 +50,11 @@
             <%= f.select :trip_id,
                 options_for_select(current_user.trips.all.collect { |trip| [trip.title, trip.id] }), include_blank: true %>
           </div>
+
+          <div class="form-group">
+            <%= f.label :image %>
+            <%= f.file_field :image %>
+          </div>
         </div>
         <%= f.submit "Update Location", class: 'btn btn-primary' %>
       <% end %>

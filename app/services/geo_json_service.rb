@@ -24,7 +24,7 @@ class GeoJSONService
           'marker-size': 'large',
           'marker-color': 'ff1a1a',
           'marker-symbol': 'rocket',
-          'image_url': location.image.url
+          'image_url': location.image.url(:thumb)
         }
       }
     end

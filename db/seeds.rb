@@ -326,7 +326,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Fun place!",
                 user_id: 12,
-                trip_id: 16
+                trip_id: 17
                )
 
 Location.create(
@@ -337,7 +337,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Fun place!",
                 user_id: 12,
-                trip_id: 14
+                trip_id: 15
                )
 
 Location.create(
@@ -447,7 +447,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "London was awesome!",
                 user_id: 12,
-                trip_id: 13
+                trip_id: 14
                )
 
 Location.create(
@@ -458,7 +458,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Wish I get to see Ancient Rome",
                 user_id: 12,
-                trip_id: 13
+                trip_id: 14
                )
 
 Location.create(
@@ -469,7 +469,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "L and Light showdown",
                 user_id: 12,
-                trip_id: 14
+                trip_id: 15
                )
 
 Location.create(
@@ -480,7 +480,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Where Lee Chong Wei trains",
                 user_id: 12,
-                trip_id: 14
+                trip_id: 15
                )
 
 Location.create(
@@ -491,7 +491,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Chow Yun Fat is here!",
                 user_id: 12,
-                trip_id: 14
+                trip_id: 15
                )
 
 Location.create(
@@ -502,7 +502,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Jay Chou fan!",
                 user_id: 12,
-                trip_id: 14
+                trip_id: 15
                )
 
 Location.create(
@@ -513,7 +513,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Great food here!",
                 user_id: 12,
-                trip_id: 14
+                trip_id: 15
                )
 
 Location.create(
@@ -524,7 +524,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Penguins!",
                 user_id: 12,
-                trip_id: 15
+                trip_id: 16
                )
 
 Location.create(
@@ -535,7 +535,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Polar Bears!",
                 user_id: 12,
-                trip_id: 15
+                trip_id: 16
                )
 
 Location.create(
@@ -546,7 +546,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Such a lively place!",
                 user_id: 12,
-                trip_id: 16
+                trip_id: 17
                )
 
 Location.create(
@@ -557,7 +557,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Best soccer players",
                 user_id: 12,
-                trip_id: 16
+                trip_id: 17
                )
 
 Location.create(
@@ -568,7 +568,7 @@ Location.create(
                 end_date: Date.new(2016, 10, 30),
                 description: "Amazon!",
                 user_id: 12,
-                trip_id: 16
+                trip_id: 17
                )
 
 ########################

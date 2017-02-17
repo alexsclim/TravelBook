@@ -9,6 +9,12 @@ class GeoJSONService
     geojson_locations = Array.new
 
     @locations.each do |location|
+
+      images = []
+      location.pictures.each do |picture|
+        images << picture.image.url(:square)
+      end
+
       geojson_locations << {
         type: 'Feature',
         geometry: {
@@ -24,7 +30,7 @@ class GeoJSONService
           'marker-size': 'large',
           'marker-color': 'ff1a1a',
           'marker-symbol': 'rocket',
-          'image_url': location.image.url(:thumb)
+          'images': images
         }
       }
     end

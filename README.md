@@ -31,7 +31,9 @@ If you want to populate your database with seed data run
 Start your rails server with
 `rails s`
 
-Go to `localhost:3000` to use the application.
+Go to `localhost:3000` to use the application.  
+  
+You will need to obtain the local_env file from me for AWS keys since images are stored on S3.  
 
 ### To run test suite
 To run the whole test suite, run `bundle exec rspec spec`.

@@ -15,6 +15,9 @@ class LocationsController < ApplicationController
   def create
     @location = current_user.locations.build(location_params)
     if @location.save
+      if params[:images]
+        CreateImageService.new(@location, params[:images]).call
+      end
       flash[:notice] = "Location created!"
       redirect_to root_url
     else
@@ -29,6 +32,9 @@ class LocationsController < ApplicationController
   def update
     @location = Location.find(params[:id])
     if @location.update(location_params)
+      if params[:images]
+        CreateImageService.new(@location, params[:images]).call
+      end
       redirect_to root_url
     else
       render 'edit'
@@ -48,11 +54,18 @@ class LocationsController < ApplicationController
   def trip_create
     @location = current_user.trips.find(params[:trip_id]).locations.build(location_params)
     if @location.save
+      if params[:images]
+        CreateImageService.new(@location, params[:images]).call
+      end
       flash[:notice] = "Location created!"
       redirect_to user_trip_path(current_user.id, params[:trip_id])
     else
       render 'trip_new'
     end
+  end
+
+  def trip_edit
+    @location = Location.find(params[:id])
   end
 
   private

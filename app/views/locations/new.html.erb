@@ -3,7 +3,7 @@
     <div class="col-lg-6 offset-lg-3">
 
       <h3 class="text-center">Add new location</h3>
-      <%= form_for(@location, url: user_locations_path, multipart: true) do |f| %>
+      <%= form_for(@location, url: user_locations_path, html: { multipart: true }) do |f| %>
 
         <div class="form-group">
           <div>Search for the location to autocomplete the form</div>
@@ -47,8 +47,8 @@
           </div>
 
           <div class="form-group">
-            <%= f.label :image %>
-            <%= f.file_field :image %>
+            <%= f.label :pictures, class: 'form-control' %>
+            <%= file_field_tag "images[]", type: :file, multiple: true %>
           </div>
         </div>
         <div class="form-group">

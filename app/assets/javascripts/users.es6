@@ -14,27 +14,48 @@ $(document).ready(()=> {
   $.ajax({
     type: "GET",
     url: `/users/${userId}`,
+    cache: false,
     dataType: "json",
     success: (data) => {
       const geoJsonLayer = L.geoJson(data, {
         onEachFeature: (feature, layer) => {
-          if (feature.properties.image_url != "/images/thumb/missing.png") {
-            layer.bindPopup(`<b><div class="text-center">${feature.properties.title}</div></b>
-                           </br>
-                           <div class="text-center">${feature.properties.description}</div>
-                           <div class="text-center">
-                           <img class="container-image" src="${feature.properties.image_url}"></div>
-                           </div>
-                           </br>
-                           <div>Start Date: ${feature.properties.start_date}</div>
-                           <div>End Date: ${feature.properties.end_date}</div>`);
+
+          const images = feature.properties.images;
+          let slideshowContent = '';
+          for (let i = 0; i < images.length; i++) {
+            let img = images[i];
+
+            slideshowContent += `<div class="image ${(i === 0 ? ' active' : '')} ">
+                                  <img src="${img}" />
+                                  </div>`;
+          }
+
+          if (slideshowContent.length > 0) {
+            layer.bindPopup(`<div class="popup">
+                              <b><div class="text-center">${feature.properties.title}</div></b>
+                              </br>
+                              <div class="text-center">
+                              <div class="slideshow">${slideshowContent}</div>
+                              </div>
+                              <div class="cycle">
+                              <a href="#" class="prev">&laquo; Previous</a>
+                              <a href="#" class="next">Next &raquo;</a>
+                              </div>
+                              </br>
+                              <div class="text-center">${feature.properties.description}</div>
+                              </br>
+                              <div>Start Date: ${feature.properties.start_date}</div>
+                              <div>End Date: ${feature.properties.end_date}</div>
+                              </div>`);
           } else {
-            layer.bindPopup(`<b><div class="text-center">${feature.properties.title}</div></b>
-                           </br>
-                           <div class="text-center">${feature.properties.description}</div>
-                           </br>
-                           <div>Start Date: ${feature.properties.start_date}</div>
-                           <div>End Date: ${feature.properties.end_date}</div>`);
+            layer.bindPopup(`<div class="popup">
+                              <b><div class="text-center">${feature.properties.title}</div></b>
+                              </br>
+                              <div class="text-center">${feature.properties.description}</div>
+                              </br>
+                              <div>Start Date: ${feature.properties.start_date}</div>
+                              <div>End Date: ${feature.properties.end_date}</div>
+                              </div>`);
           }
         }
       });
@@ -42,5 +63,26 @@ $(document).ready(()=> {
       map.addLayer(markers);
       map.fitBounds(markers.getBounds());
     }
+  });
+
+  $('#users-map').on('click', '.popup .cycle a', () => {
+      let $slideshow = $('.slideshow'),
+          $newSlide;
+
+      if ($(this).hasClass('prev')) {
+          $newSlide = $slideshow.find('.active').prev();
+          if ($newSlide.index() < 0) {
+              $newSlide = $('.image').last();
+          }
+      } else {
+          $newSlide = $slideshow.find('.active').next();
+          if ($newSlide.index() < 0) {
+              $newSlide = $('.image').first();
+          }
+      }
+
+      $slideshow.find('.active').removeClass('active').hide();
+      $newSlide.addClass('active').show();
+      return false;
   });
 });

@@ -1,6 +1,9 @@
 # TravelBook
-Remember where you have been!  
-  
+Remember where you have been!
+
+Pre-populated account credentials:
+Username: guest.guest@travelbook.com
+Password: 123456
 http://travelbook-me.herokuapp.com/
 
 TravelBook Web Application built using Ruby on Rails.
@@ -31,9 +34,9 @@ If you want to populate your database with seed data run
 Start your rails server with
 `rails s`
 
-Go to `localhost:3000` to use the application.  
-  
-You will need to obtain the local_env file from me for AWS keys since images are stored on S3.  
+Go to `localhost:3000` to use the application.
+
+You will need to obtain the local_env file from me for AWS keys since images are stored on S3.
 
 ### To run test suite
 To run the whole test suite, run `bundle exec rspec spec`.

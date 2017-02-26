@@ -1,9 +1,9 @@
 # TravelBook
 Remember where you have been!
 
-Pre-populated account credentials:
-Username: guest.guest@travelbook.com
-Password: 123456
+Pre-populated account credentials:  
+Username: guest.guest@travelbook.com  
+Password: 123456  
 http://travelbook-me.herokuapp.com/
 
 TravelBook Web Application built using Ruby on Rails.
